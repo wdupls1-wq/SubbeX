@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "subbex"
+version = "0.1.0"
+description = "macOS menu bar subtitle generator with local Whisper transcription"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "OpenAI Codex" }
+]
+dependencies = [
+  "faster-whisper>=1.1.0",
+  "platformdirs>=4.2.2",
+  "pyobjc-framework-Cocoa>=10.2",
+]
+
+[project.optional-dependencies]
+app = ["py2app>=0.28.8"]
+dev = ["pytest>=8.2.0"]
+
+[project.scripts]
+subbex = "subbex.main:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
